@@ -33,3 +33,30 @@ function trimdata(txt){
 	var ttxt = txt.substring(0,140);
 	return ttxt + "...";
 }
+
+//Add notification function
+function NotificationFunction() {
+  if (!("Notification" in window)) {
+    alert("This browser does not support desktop notification");
+  }
+  else if (Notification.permission === "granted") {
+        var options = {
+              $XML
+             };
+          var notification = new Notification("Hi",options);
+  }
+  else if (Notification.permission !== 'denied') {
+    Notification.requestPermission(function (permission) {
+      if (!('permission' in Notification)) {
+        Notification.permission = permission;
+      }
+    
+      if (permission === "granted") {
+        var options = {
+              $XML
+          };
+        var notification = new Notification("Hi",options);
+      }
+    });
+  }
+}
