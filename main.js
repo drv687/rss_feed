@@ -2,6 +2,11 @@
 
 const electron = require('electron')
 const {app, BrowserWindow} = electron
+const notifier = require("node-notifier");//Add notifier function 
+var onError = function(err,response){
+    console.error(err,response);
+};
+
 
 //Quit when all the windows are closed.
 app.on('window-all-closed', function(){
@@ -19,4 +24,3 @@ app.on('ready', function(){
 		theWindow = null;
 	});
 });
- 

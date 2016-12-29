@@ -35,28 +35,25 @@ function trimdata(txt){
 }
 
 //Add notification function
-function NotificationFunction() {
-  if (!("Notification" in window)) {
-    alert("This browser does not support desktop notification");
-  }
-  else if (Notification.permission === "granted") {
-        var options = {
-              $XML
-             };
-          var notification = new Notification("Hi",options);
-  }
-  else if (Notification.permission !== 'denied') {
-    Notification.requestPermission(function (permission) {
-      if (!('permission' in Notification)) {
-        Notification.permission = permission;
-      }
-    
-      if (permission === "granted") {
-        var options = {
-              $XML
-          };
-        var notification = new Notification("Hi",options);
-      }
-    });
-  }
-}
+//Use node-notifier plugin to add notification function
+var notification = new Notification('Title', {
+  body: 'feedurl',
+  title:"New RSS Feed",
+  icon:'C:/images/icon.png',
+});
+
+notification.addEventListener("click",function(){
+    alert("Notification checked.");
+},false);
+
+notification.addEventListener("show",function(){
+    alert("Sample Notification Here");
+},false);
+
+notification.addEventListener("error",function(e){
+    alert("Error! Something went wrong");
+},false);
+
+notification.addEventListener("close",function(){
+    alert("Close");
+},false);
