@@ -1,3 +1,6 @@
+const notifier = require('node-notifier');
+const path = require('path');
+
 $("#help").hide();
 $("#showxml").click(function () {
 
@@ -23,7 +26,7 @@ $("#showxml").click(function () {
 						pubDate: $this.find("pubDate").text(),
 						author: $this.find("author").text()
 					};
-				$('#results').append($('<div class="panel panel-default"/>').html('<div class="panel-body"><p><strong><a href="' + item.link + '">' + item.title + '</a></strong></p>' + '<p>' + trimdata(item.description) + '</p></div>'));
+				$('#results').append($('<div class="panel panel-default"/>').html('<div class="panel-body"><p><strong><a class="itemClick"><span class="title">' + item.title + '</span></a></strong></p>' + '<p>' + trimdata(item.description) + '</p></div>'));
 
 			});
 		});
@@ -34,26 +37,19 @@ function trimdata(txt){
 	return ttxt + "...";
 }
 
-//Add notification function
-//Use node-notifier plugin to add notification function
-var notification = new Notification('Title', {
-  body: 'feedurl',
-  title:"New RSS Feed",
-  icon:'C:/images/icon.png',
-});
-
-notification.addEventListener("click",function(){
-    alert("Notification checked.");
-},false);
-
-notification.addEventListener("show",function(){
-    alert("Sample Notification Here");
-},false);
-
-notification.addEventListener("error",function(e){
-    alert("Error! Something went wrong");
-},false);
-
-notification.addEventListener("close",function(){
-    alert("Close");
-},false);
+	$("#results").on( "click",".itemClick", function(){
+		var title = "ALERT!",
+            message = $(this).find(".title").text();
+        createNotification(title, message);
+	});
+	
+    var createNotification = function(title, message) {
+        notifier.notify({
+            title: title,
+            message: message,
+            icon: path.join(__dirname, 'image/favicon.png'),
+            sound: true,
+            wait: false
+        });
+    };
+	
