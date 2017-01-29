@@ -26,8 +26,7 @@ $("#showxml").click(function () {
 						pubDate: $this.find("pubDate").text(),
 						author: $this.find("author").text()
 					};
-				$('#results').append($('<div class="panel panel-default"/>').html('<div class="panel-body"><p><strong><a class="itemClick"><span class="title">' + item.title + '</span></a></strong></p>' + '<p>' + trimdata(item.description) + '</p></div>'));
-
+				$('#results').append($('<div class="panel panel-default"/>').html('<div class="panel-body"><p><strong><a class="itemClick"><span class="title">' + item.title + '</span></a></strong></p>' + '<p>' + $('<div class ="panel panel-default" />').html('<div class="panel-body>"<a class="itemClick"><span class ="message">'+ item.description +trimdata(item.description) + '</p></div>')));
 			});
 		});
 	}
@@ -38,18 +37,21 @@ function trimdata(txt){
 }
 
 	$("#results").on( "click",".itemClick", function(){
-		var title = "ALERT!",
+		var title = "RSS FEED!",
             message = $(this).find(".title").text();
-        createNotification(title, message);
+						description = $(this).find(".description").text();
+						link = $(this).find(".link").text();
+        createNotification(title, message, description, link);
 	});
-	
-    var createNotification = function(title, message) {
+
+    var createNotification = function(title, message, description, link) {
         notifier.notify({
             title: title,
             message: message,
-            icon: path.join(__dirname, 'image/favicon.png'),
+						description: description,
+						link: link,
+						icon: path.join(__dirname, 'image/favicon.png'),
             sound: true,
             wait: false
-        });
-    };
-	
+					})
+						};
