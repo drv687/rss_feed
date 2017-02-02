@@ -55,4 +55,9 @@ function trimdata(txt){
             sound: true,
             wait: false
 					})
+	    function LinkToFeed(){
+		    if feedurl != null{
+			$.get(feedurl);    
+		    }
+	    }
 						};
