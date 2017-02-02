@@ -51,6 +51,7 @@ function trimdata(txt){
 						description: description,
 						link: link,
 						icon: path.join(__dirname, 'image/favicon.png'),
+		button.onclick()="LinkToFeed()">Link</button>
             sound: true,
             wait: false
 					})
