@@ -44,20 +44,18 @@ function trimdata(txt){
         createNotification(title, message, description, link);
 	});
 
+
+//Attempt to add link to notification dialog
     var createNotification = function(title, message, description, link) {
         notifier.notify({
-            title: title,
-            message: message,
-						description: description,
-						link: link,
-						icon: path.join(__dirname, 'image/favicon.png'),
-		button.onclick()="LinkToFeed()">Link</button>
+    var t = document.createElement('t');
+var linkText = document.createTextNode("Link Text");
+t.appendChild(linkText);
+t.title = "RSS Feed";
+t.href = "https://www.wired.com/feed/";
+document.body.appendChild(t);
+icon: path.join(__dirname, 'image/favicon.png'),
             sound: true,
             wait: false
-					})
-	    function LinkToFeed(){
-		    if feedurl != null{
-			$.get(feedurl);    
-		    }
-	    }
+		
 						};
