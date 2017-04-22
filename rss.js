@@ -1,6 +1,6 @@
-const notifier = require('node-notifier');
-const path = require('path');
-
+const path = require('path')
+const{dialog} = require('electron').remote
+console.log(dialog)
 $("#help").hide();
 $("#showxml").click(function () {
 
@@ -41,21 +41,5 @@ function trimdata(txt){
             message = $(this).find(".title").text();
 						description = $(this).find(".description").text();
 						link = $(this).find(".link").text();
-        createNotification(title, message, description, link);
+dialog.showMessageBox({ message: "Your rss feed is: " this, buttons: ["OK"]});
 	});
-
-
-//Attempt to add link to notification dialog
-    var createNotification = function(title, message, description, link) {
-        notifier.notify({
-    var t = document.createElement('t');
-var linkText = document.createTextNode("Link Text");
-t.appendChild(linkText);
-t.title = "RSS Feed";
-t.href = "https://www.wired.com/feed/";
-document.body.appendChild(t);
-icon: path.join(__dirname, 'image/favicon.png'),
-            sound: true,
-            wait: false
-		
-						};
