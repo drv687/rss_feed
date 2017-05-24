@@ -4,6 +4,9 @@ const electron = require('electron')
 const {app, BrowserWindow} = electron
 var onError = function(err,response){
     console.error(err,response);
+ webPreferences: {
+    nativeWindowOpen: true
+  }
 };
 
 

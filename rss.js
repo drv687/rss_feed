@@ -52,8 +52,9 @@ $('#results').append($('<div class="panel panel-default"/>').html('<div class="p
                                                 notifier.on('timeout', function (notifierObject, options) {
                                                   // Triggers if `wait: true` and notification closes
                                                 });
+												
+												window.open(vLink);
                                 });
 
                 }
-notifier.onclick(open.window());
 });
